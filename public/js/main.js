@@ -755,7 +755,7 @@ function handleContactFarmer(farmerName, cropName) {
     // Redirect to chat page with farmer parameter
     console.log(`Opening chat with ${farmerName} about ${cropName}`);
     
-    const chatUrl = `chat.html?farmer=${encodeURIComponent(farmerName)}&crop=${encodeURIComponent(cropName)}`;
+    const chatUrl = `public/chat.html?farmer=${encodeURIComponent(farmerName)}&crop=${encodeURIComponent(cropName)}`;
     window.location.href = chatUrl;
 }
 

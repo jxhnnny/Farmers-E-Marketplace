@@ -60,8 +60,11 @@ if (process.env.NODE_ENV === 'development') {
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
+// Serve static files from root directory (for index.html)
+app.use(express.static(path.join(__dirname, '..')));
+
 // Serve static files from public directory
-app.use(express.static(path.join(__dirname, '../public')));
+app.use('/public', express.static(path.join(__dirname, '../public')));
 
 // Serve uploaded images
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
@@ -90,7 +93,7 @@ handleSocketConnection(io);
 
 // Serve frontend pages
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../public/index.html'));
+    res.sendFile(path.join(__dirname, '../index.html'));
 });
 
 app.get('/admin', (req, res) => {
@@ -144,7 +147,7 @@ app.get('*', (req, res) => {
     if (req.path.startsWith('/api/')) {
         return res.status(404).json({ message: 'API endpoint not found' });
     }
-    res.sendFile(path.join(__dirname, '../public/index.html'));
+    res.sendFile(path.join(__dirname, '../index.html'));
 });
 
 // Global error handler
