@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat - Farmers Marketplace</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/chat.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="images/logo.svg">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <a href="index.html">
+                        <img src="images/logo.svg" alt="Namibian Farmers Marketplace" class="logo">
+                    </a>
+                    <span class="brand-text">Farmers Chat</span>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="marketplace.html" class="nav-link">Marketplace</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="chat.html" class="nav-link active">Chat</a>
+                    </li>
+                </ul>
+                <div class="nav-auth">
+                    <!-- User info will be populated by JavaScript -->
+                    <div id="loggedInNav" class="auth-state">
+                        <div class="user-info">
+                            <span class="user-name" id="navUserName">Loading...</span>
+                            <div class="user-dropdown">
+                                <button class="dropdown-btn">
+                                    <i class="fas fa-user-circle"></i>
+                                </button>
+                                <div class="dropdown-content">
+                                    <a href="#" id="userPortalLink"><i class="fas fa-tachometer-alt"></i> My Portal</a>
+                                    <a href="#profile"><i class="fas fa-user"></i> My Profile</a>
+                                    <a href="#settings"><i class="fas fa-cog"></i> Settings</a>
+                                    <a href="#" onclick="handleLogout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Chat Container -->
+    <div class="chat-container">
+        <!-- Sidebar -->
+        <div class="chat-sidebar">
+            <div class="chat-sidebar-header">
+                <div class="sidebar-title">
+                    <i class="fas fa-comments"></i>
+                    <span>Messages</span>
+                </div>
+                <button class="new-chat-btn" id="newChatBtn">
+                    <i class="fas fa-edit"></i>
+                </button>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="chat-search">
+                <div class="search-input-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="chatSearch" placeholder="Search conversations...">
+                </div>
+            </div>
+
+            <!-- Online Users -->
+            <div class="online-users" id="onlineUsers" style="display: none;">
+                <div class="section-header">
+                    <span class="section-title">Online Users</span>
+                    <span class="section-count" id="onlineCount">0</span>
+                </div>
+                <div class="users-list" id="onlineUsersList">
+                    <!-- Online users will be populated here -->
+                </div>
+            </div>
+
+            <!-- Conversation List -->
+            <div class="conversations-list" id="conversationsList">
+                <div class="loading-conversations">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <span>Loading conversations...</span>
+                </div>
+                <!-- Conversations will be populated here -->
+            </div>
+        </div>
+
+        <!-- Chat Main Area -->
+        <div class="chat-main">
+            <!-- Welcome Screen -->
+            <div class="chat-welcome" id="chatWelcome">
+                <div class="welcome-content">
+                    <div class="welcome-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h2>Welcome to Farmers Chat</h2>
+                    <p>Connect with farmers and buyers across Namibia. Select a conversation to start chatting or create a new one.</p>
+                    <button class="btn btn-primary" onclick="showNewChatModal()">
+                        <i class="fas fa-plus"></i>
+                        Start New Chat
+                    </button>
+                </div>
+            </div>
+
+            <!-- Chat Window -->
+            <div class="chat-window" id="chatWindow" style="display: none;">
+                <!-- Chat Header -->
+                <div class="chat-header">
+                    <div class="chat-partner-info">
+                        <div class="partner-avatar">
+                            <img id="partnerAvatar" src="images/default-avatar.png" alt="Partner Avatar">
+                            <div class="online-indicator" id="partnerOnlineStatus"></div>
+                        </div>
+                        <div class="partner-details">
+                            <h3 id="partnerName">Partner Name</h3>
+                            <span class="partner-status" id="partnerStatus">Online</span>
+                        </div>
+                    </div>
+                    <div class="chat-actions">
+                        <button class="action-btn" title="Chat Settings">
+                            <i class="fas fa-cog"></i>
+                        </button>
+                        <button class="action-btn" onclick="closeChatWindow()" title="Close Chat">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Messages Area -->
+                <div class="messages-container" id="messagesContainer">
+                    <div class="messages-loading" id="messagesLoading">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <span>Loading messages...</span>
+                    </div>
+                    <!-- Messages will be populated here -->
+                </div>
+
+                <!-- Typing Indicator -->
+                <div class="typing-indicator" id="typingIndicator" style="display: none;">
+                    <div class="typing-bubble">
+                        <span id="typingText">User is typing</span>
+                        <div class="typing-dots">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Message Input Area -->
+                <div class="message-input-area">
+                    <div class="message-input-container">
+                        <button class="attachment-btn" title="Attach File">
+                            <i class="fas fa-paperclip"></i>
+                        </button>
+                        <div class="input-wrapper">
+                            <textarea 
+                                id="messageInput" 
+                                placeholder="Type your message..."
+                                rows="1"
+                                maxlength="1000"
+                            ></textarea>
+                            <div class="input-counter">
+                                <span id="charCounter">0/1000</span>
+                            </div>
+                        </div>
+                        <button class="send-btn" id="sendBtn" disabled>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Chat Modal -->
+    <div class="modal" id="newChatModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Start New Chat</h3>
+                <button class="close-modal" onclick="closeNewChatModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="user-search">
+                    <div class="search-input-container">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="userSearch" placeholder="Search users...">
+                    </div>
+                    <div class="search-filters">
+                        <label>
+                            <input type="radio" name="userType" value="all" checked>
+                            All Users
+                        </label>
+                        <label>
+                            <input type="radio" name="userType" value="farmer">
+                            Farmers
+                        </label>
+                        <label>
+                            <input type="radio" name="userType" value="buyer">
+                            Buyers
+                        </label>
+                    </div>
+                </div>
+                <div class="users-grid" id="usersGrid">
+                    <div class="loading-users">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <span>Loading users...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Connection Status -->
+    <div class="connection-status" id="connectionStatus">
+        <div class="status-indicator">
+            <i class="fas fa-wifi"></i>
+            <span id="statusText">Connecting...</span>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer">
+        <!-- Notifications will be added here dynamically -->
+    </div>
+
+    <!-- Scripts -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/chat.js"></script>
+</body>
+</html>

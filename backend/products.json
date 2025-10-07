@@ -1,0 +1,13 @@
+[
+  {
+    "_id": { "$oid": "000000000000000000000101" },
+    "farmer_id": "",
+    "name": "",
+    "category": "",
+    "price": 0,
+    "quantity": 0,
+    "unit": "",
+    "description": "",
+    "images": []
+  }
+]

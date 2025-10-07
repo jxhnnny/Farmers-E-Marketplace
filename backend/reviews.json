@@ -1,0 +1,10 @@
+[
+  {
+    "_id": { "$oid": "000000000000000000000401" },
+    "product_id": "",
+    "buyer_id": "",
+    "rating": 0,
+    "comment": "",
+    "review_date": ""
+  }
+]

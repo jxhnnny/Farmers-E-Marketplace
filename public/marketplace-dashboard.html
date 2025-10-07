@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketplace Dashboard - Farmers Market</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/marketplace-dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fas fa-seedling"></i>
+                    <h2>FarmersMarket</h2>
+                </div>
+                <button class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            
+            <div class="sidebar-menu">
+                <ul class="menu">
+                    <li><a href="#overview" class="menu-item active">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Overview</span>
+                    </a></li>
+                    <li><a href="#featured-crops" class="menu-item">
+                        <i class="fas fa-star"></i>
+                        <span>Featured Crops</span>
+                    </a></li>
+                    <li><a href="#marketplace-analytics" class="menu-item">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Analytics</span>
+                    </a></li>
+                    <li><a href="#trends" class="menu-item">
+                        <i class="fas fa-trending-up"></i>
+                        <span>Market Trends</span>
+                    </a></li>
+                    <li><a href="#farmers-spotlight" class="menu-item">
+                        <i class="fas fa-user-friends"></i>
+                        <span>Farmers Spotlight</span>
+                    </a></li>
+                    <li><a href="#supply-demand" class="menu-item">
+                        <i class="fas fa-balance-scale"></i>
+                        <span>Supply & Demand</span>
+                    </a></li>
+                    <li><a href="#recent-activity" class="menu-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Recent Activity</span>
+                    </a></li>
+                </ul>
+                
+                <div class="sidebar-divider"></div>
+                
+                <ul class="menu">
+                    <li><a href="farmer-portal.html" class="menu-item">
+                        <i class="fas fa-tractor"></i>
+                        <span>Farmer Portal</span>
+                    </a></li>
+                    <li><a href="buyer-portal.html" class="menu-item">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Buyer Portal</span>
+                    </a></li>
+                    <li><a href="admin-panel.html" class="menu-item">
+                        <i class="fas fa-users-cog"></i>
+                        <span>Admin Panel</span>
+                    </a></li>
+                    <li><a href="index.html" class="menu-item">
+                        <i class="fas fa-home"></i>
+                        <span>Main Site</span>
+                    </a></li>
+                </ul>
+            </div>
+        </nav>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="dashboard-header">
+                <div class="header-content">
+                    <h1>Marketplace Dashboard</h1>
+                    <p>Real-time insights and market overview</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-outline">
+                        <i class="fas fa-download"></i>
+                        Export Report
+                    </button>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-plus"></i>
+                        Quick Actions
+                    </button>
+                </div>
+            </header>
+            
+            <!-- Overview Section -->
+            <section id="overview" class="content-section active">
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>2,847</h3>
+                            <p>Total Crops Listed</p>
+                            <span class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                +12.5%
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>1,234</h3>
+                            <p>Active Farmers</p>
+                            <span class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                +8.3%
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-shopping-bag"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>3,567</h3>
+                            <p>Registered Buyers</p>
+                            <span class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                +15.7%
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>N$ 2.1M</h3>
+                            <p>Total Transactions</p>
+                            <span class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                +23.1%
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Insights Grid -->
+                <div class="insights-grid">
+                    <div class="insight-card">
+                        <h3>Today's Highlights</h3>
+                        <div class="highlight-list">
+                            <div class="highlight-item">
+                                <i class="fas fa-fire text-red"></i>
+                                <span>156 new crop listings today</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-handshake text-green"></i>
+                                <span>89 successful transactions</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-star text-yellow"></i>
+                                <span>23 five-star farmer reviews</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-truck text-blue"></i>
+                                <span>67 deliveries completed</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="insight-card">
+                        <h3>Market Health Score</h3>
+                        <div class="health-score">
+                            <div class="score-circle">
+                                <div class="score-value">94</div>
+                                <div class="score-label">Excellent</div>
+                            </div>
+                            <div class="health-factors">
+                                <div class="factor">
+                                    <span>Supply Availability</span>
+                                    <div class="factor-bar">
+                                        <div class="factor-fill" style="width: 96%"></div>
+                                    </div>
+                                </div>
+                                <div class="factor">
+                                    <span>Buyer Demand</span>
+                                    <div class="factor-bar">
+                                        <div class="factor-fill" style="width: 92%"></div>
+                                    </div>
+                                </div>
+                                <div class="factor">
+                                    <span>Price Stability</span>
+                                    <div class="factor-bar">
+                                        <div class="factor-fill" style="width: 88%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Recent Activity Feed -->
+                <div class="activity-feed">
+                    <h3>Recent Marketplace Activity</h3>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-plus text-green"></i>
+                            </div>
+                            <div class="activity-content">
+                                <strong>Green Valley Farms</strong> listed 500kg of organic tomatoes
+                                <div class="activity-time">2 minutes ago</div>
+                            </div>
+                        </div>
+                        
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-shopping-cart text-blue"></i>
+                            </div>
+                            <div class="activity-content">
+                                <strong>Sarah Mitchell</strong> purchased 50kg of maize from Desert Bloom Farm
+                                <div class="activity-time">5 minutes ago</div>
+                            </div>
+                        </div>
+                        
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-star text-yellow"></i>
+                            </div>
+                            <div class="activity-content">
+                                <strong>Oasis Vegetables</strong> received a 5-star rating from John Smith
+                                <div class="activity-time">12 minutes ago</div>
+                            </div>
+                        </div>
+                        
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-truck text-purple"></i>
+                            </div>
+                            <div class="activity-content">
+                                Order #ORD-2024-1847 delivered successfully to Windhoek
+                                <div class="activity-time">18 minutes ago</div>
+                            </div>
+                        </div>
+                        
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-user-plus text-teal"></i>
+                            </div>
+                            <div class="activity-content">
+                                <strong>Sunrise Organic Farm</strong> joined the marketplace
+                                <div class="activity-time">1 hour ago</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Featured Crops Section -->
+            <section id="featured-crops" class="content-section">
+                <div class="section-header">
+                    <h2>Featured Crops</h2>
+                    <p>Top performing crops in the marketplace</p>
+                </div>
+                
+                <div class="featured-crops-grid">
+                    <div class="featured-crop-card">
+                        <div class="crop-badge">Hot Deal</div>
+                        <img src="images/crops/organic-tomatoes.jpg" alt="Organic Tomatoes" class="crop-image">
+                        <div class="crop-info">
+                            <h3>Organic Tomatoes</h3>
+                            <p class="farmer-name">Green Valley Farms</p>
+                            <div class="crop-metrics">
+                                <span class="price">N$45/kg</span>
+                                <span class="demand-indicator">
+                                    <i class="fas fa-fire"></i>
+                                    High Demand
+                                </span>
+                            </div>
+                            <div class="crop-stats">
+                                <div class="stat">
+                                    <i class="fas fa-eye"></i>
+                                    1.2k views
+                                </div>
+                                <div class="stat">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    89 orders
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="featured-crop-card">
+                        <div class="crop-badge trending">Trending</div>
+                        <img src="images/crops/fresh-carrots.jpg" alt="Fresh Carrots" class="crop-image">
+                        <div class="crop-info">
+                            <h3>Fresh Carrots</h3>
+                            <p class="farmer-name">Desert Bloom Farm</p>
+                            <div class="crop-metrics">
+                                <span class="price">N$28/kg</span>
+                                <span class="demand-indicator">
+                                    <i class="fas fa-chart-line"></i>
+                                    Trending Up
+                                </span>
+                            </div>
+                            <div class="crop-stats">
+                                <div class="stat">
+                                    <i class="fas fa-eye"></i>
+                                    856 views
+                                </div>
+                                <div class="stat">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    67 orders
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="featured-crop-card">
+                        <div class="crop-badge new">New</div>
+                        <img src="images/crops/organic-spinach.jpg" alt="Organic Spinach" class="crop-image">
+                        <div class="crop-info">
+                            <h3>Organic Spinach</h3>
+                            <p class="farmer-name">Oasis Vegetables</p>
+                            <div class="crop-metrics">
+                                <span class="price">N$35/kg</span>
+                                <span class="demand-indicator">
+                                    <i class="fas fa-leaf"></i>
+                                    Organic Certified
+                                </span>
+                            </div>
+                            <div class="crop-stats">
+                                <div class="stat">
+                                    <i class="fas fa-eye"></i>
+                                    423 views
+                                </div>
+                                <div class="stat">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    34 orders
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="featured-crop-card">
+                        <div class="crop-badge seasonal">Seasonal</div>
+                        <img src="images/crops/yellow-maize.jpg" alt="Yellow Maize" class="crop-image">
+                        <div class="crop-info">
+                            <h3>Yellow Maize</h3>
+                            <p class="farmer-name">Harvest Moon Farm</p>
+                            <div class="crop-metrics">
+                                <span class="price">N$18/kg</span>
+                                <span class="demand-indicator">
+                                    <i class="fas fa-calendar"></i>
+                                    Peak Season
+                                </span>
+                            </div>
+                            <div class="crop-stats">
+                                <div class="stat">
+                                    <i class="fas fa-eye"></i>
+                                    2.1k views
+                                </div>
+                                <div class="stat">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    156 orders
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Analytics Section -->
+            <section id="marketplace-analytics" class="content-section">
+                <div class="section-header">
+                    <h2>Marketplace Analytics</h2>
+                    <p>Data-driven insights for better decision making</p>
+                </div>
+                
+                <div class="analytics-grid">
+                    <div class="analytics-card">
+                        <h3>Sales Trends (Last 30 Days)</h3>
+                        <div class="chart-placeholder">
+                            <i class="fas fa-chart-line"></i>
+                            <p>Interactive sales chart would be displayed here</p>
+                        </div>
+                    </div>
+                    
+                    <div class="analytics-card">
+                        <h3>Top Selling Categories</h3>
+                        <div class="category-stats">
+                            <div class="category-item">
+                                <span class="category-name">Vegetables</span>
+                                <div class="category-bar">
+                                    <div class="category-fill" style="width: 85%"></div>
+                                </div>
+                                <span class="category-percent">85%</span>
+                            </div>
+                            <div class="category-item">
+                                <span class="category-name">Grains</span>
+                                <div class="category-bar">
+                                    <div class="category-fill" style="width: 72%"></div>
+                                </div>
+                                <span class="category-percent">72%</span>
+                            </div>
+                            <div class="category-item">
+                                <span class="category-name">Fruits</span>
+                                <div class="category-bar">
+                                    <div class="category-fill" style="width: 68%"></div>
+                                </div>
+                                <span class="category-percent">68%</span>
+                            </div>
+                            <div class="category-item">
+                                <span class="category-name">Herbs</span>
+                                <div class="category-bar">
+                                    <div class="category-fill" style="width: 45%"></div>
+                                </div>
+                                <span class="category-percent">45%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="analytics-card">
+                        <h3>Regional Distribution</h3>
+                        <div class="region-stats">
+                            <div class="region-item">
+                                <div class="region-info">
+                                    <span class="region-name">Khomas</span>
+                                    <span class="region-count">456 farmers</span>
+                                </div>
+                                <div class="region-progress">
+                                    <div class="progress-fill" style="width: 78%"></div>
+                                </div>
+                            </div>
+                            <div class="region-item">
+                                <div class="region-info">
+                                    <span class="region-name">Otjozondjupa</span>
+                                    <span class="region-count">298 farmers</span>
+                                </div>
+                                <div class="region-progress">
+                                    <div class="progress-fill" style="width: 65%"></div>
+                                </div>
+                            </div>
+                            <div class="region-item">
+                                <div class="region-info">
+                                    <span class="region-name">Erongo</span>
+                                    <span class="region-count">187 farmers</span>
+                                </div>
+                                <div class="region-progress">
+                                    <div class="progress-fill" style="width: 42%"></div>
+                                </div>
+                            </div>
+                            <div class="region-item">
+                                <div class="region-info">
+                                    <span class="region-name">Hardap</span>
+                                    <span class="region-count">143 farmers</span>
+                                </div>
+                                <div class="region-progress">
+                                    <div class="progress-fill" style="width: 35%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Other sections would be implemented similarly -->
+            <section id="trends" class="content-section">
+                <div class="section-header">
+                    <h2>Market Trends</h2>
+                    <p>Emerging patterns and opportunities</p>
+                </div>
+                <div class="trends-placeholder">
+                    <i class="fas fa-trending-up"></i>
+                    <p>Market trends analysis coming soon</p>
+                </div>
+            </section>
+            
+            <section id="farmers-spotlight" class="content-section">
+                <div class="section-header">
+                    <h2>Farmers Spotlight</h2>
+                    <p>Highlighting our top performing farmers</p>
+                </div>
+                <div class="spotlight-placeholder">
+                    <i class="fas fa-user-friends"></i>
+                    <p>Farmers spotlight feature coming soon</p>
+                </div>
+            </section>
+            
+            <section id="supply-demand" class="content-section">
+                <div class="section-header">
+                    <h2>Supply & Demand Analysis</h2>
+                    <p>Market balance and opportunities</p>
+                </div>
+                <div class="supply-demand-placeholder">
+                    <i class="fas fa-balance-scale"></i>
+                    <p>Supply & demand analysis coming soon</p>
+                </div>
+            </section>
+            
+            <section id="recent-activity" class="content-section">
+                <div class="section-header">
+                    <h2>Recent Activity</h2>
+                    <p>Latest marketplace activities and updates</p>
+                </div>
+                <div class="recent-activity-placeholder">
+                    <i class="fas fa-clock"></i>
+                    <p>Extended activity feed coming soon</p>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <script src="js/marketplace-dashboard.js"></script>
+</body>
+</html>

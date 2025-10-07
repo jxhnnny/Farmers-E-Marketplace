@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buyer Portal - Namibian Farmers Marketplace</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/buyer-portal.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <a href="index.html">
+                        <img src="images/logo.svg" alt="Namibian Farmers Marketplace" class="logo">
+                    </a>
+                    <span class="brand-text">Buyer Portal</span>
+                </div>
+                <div class="nav-links">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="marketplace-dashboard.html" class="nav-link">Marketplace</a>
+                    <a href="chat.html" class="nav-link">Chat</a>
+                    <a href="farmer-portal.html" class="nav-link farmer-only" style="display: none;">Farmer Portal</a>
+                    <a href="admin-panel.html" class="nav-link admin-only" style="display: none;">Admin</a>
+                </div>
+                <div class="nav-auth">
+                    <div class="cart-info">
+                        <button class="cart-btn" onclick="showCart()">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count" id="cartCount">0</span>
+                        </button>
+                    </div>
+                    <div class="user-info">
+                        <span class="user-name" id="userWelcome">Welcome, Buyer</span>
+                        <div class="user-dropdown">
+                            <button class="dropdown-btn">
+                                <i class="fas fa-user-circle"></i>
+                            </button>
+                            <div class="dropdown-content">
+                                <a href="#profile"><i class="fas fa-user"></i> My Profile</a>
+                                <a href="#settings"><i class="fas fa-cog"></i> Settings</a>
+                                <a href="#help"><i class="fas fa-question-circle"></i> Help</a>
+                                <a href="#" onclick="handleLogout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-menu">
+            <a href="#browse-crops" class="menu-item active">
+                <i class="fas fa-search"></i>
+                <span>Browse Crops</span>
+            </a>
+            <a href="#my-orders" class="menu-item">
+                <i class="fas fa-shopping-bag"></i>
+                <span>My Orders</span>
+            </a>
+            <a href="#cart" class="menu-item">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Shopping Cart</span>
+                <span class="cart-count-badge" id="sidebarCartCount">0</span>
+            </a>
+            <a href="#messages" class="menu-item">
+                <i class="fas fa-envelope"></i>
+                <span>Messages</span>
+                <span class="message-count">2</span>
+            </a>
+            <a href="#favorites" class="menu-item">
+                <i class="fas fa-heart"></i>
+                <span>Favorites</span>
+            </a>
+            <a href="#profile" class="menu-item">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </a>
+            <a href="#order-history" class="menu-item">
+                <i class="fas fa-history"></i>
+                <span>Order History</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Browse Crops Section -->
+        <section id="browse-crops" class="content-section active">
+            <div class="section-header">
+                <h1 id="browseTitle">Browse Fresh Produce</h1>
+                <p id="browseSubtitle">Find quality crops from local farmers across Namibia</p>
+            </div>
+
+            <!-- Advanced Search and Filters -->
+            <div class="search-filters-panel">
+                <div class="search-bar">
+                    <div class="search-input-container">
+                        <input type="text" id="cropSearchInput" placeholder="Search crops, farmers, locations..." class="search-input">
+                        <button class="search-btn" onclick="performSearch()">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="filters-container">
+                    <div class="filter-row">
+                        <div class="filter-group">
+                            <label>Category</label>
+                            <select id="categoryFilter" class="filter-select">
+                                <option value="">All Categories</option>
+                                <option value="vegetables">Vegetables</option>
+                                <option value="fruits">Fruits</option>
+                                <option value="grains">Grains</option>
+                                <option value="legumes">Legumes</option>
+                                <option value="herbs">Herbs</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Region</label>
+                            <select id="regionFilter" class="filter-select">
+                                <option value="">All Regions</option>
+                                <option value="khomas">Khomas</option>
+                                <option value="erongo">Erongo</option>
+                                <option value="otjozondjupa">Otjozondjupa</option>
+                                <option value="omaheke">Omaheke</option>
+                                <option value="hardap">Hardap</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Price Range</label>
+                            <select id="priceFilter" class="filter-select">
+                                <option value="">All Prices</option>
+                                <option value="0-50">Under N$50/kg</option>
+                                <option value="50-100">N$50-100/kg</option>
+                                <option value="100-200">N$100-200/kg</option>
+                                <option value="200+">Over N$200/kg</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Sort By</label>
+                            <select id="sortFilter" class="filter-select">
+                                <option value="newest">Newest First</option>
+                                <option value="price-low">Price: Low to High</option>
+                                <option value="price-high">Price: High to Low</option>
+                                <option value="quantity">Quantity Available</option>
+                                <option value="rating">Farmer Rating</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-row">
+                        <div class="filter-group">
+                            <label>Growing Method</label>
+                            <div class="checkbox-filters">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="growingMethod" value="organic">
+                                    <span class="checkmark"></span>
+                                    Organic
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="growingMethod" value="sustainable">
+                                    <span class="checkmark"></span>
+                                    Sustainable
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="growingMethod" value="pesticide-free">
+                                    <span class="checkmark"></span>
+                                    Pesticide-free
+                                </label>
+                            </div>
+                        </div>
+                        <div class="filter-group">
+                            <label>Delivery Options</label>
+                            <div class="checkbox-filters">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="deliveryOption" value="pickup">
+                                    <span class="checkmark"></span>
+                                    Farm Pickup
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="deliveryOption" value="delivery">
+                                    <span class="checkmark"></span>
+                                    Local Delivery
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="deliveryOption" value="shipping">
+                                    <span class="checkmark"></span>
+                                    Shipping
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-actions">
+                        <button class="btn btn-outline" onclick="clearFilters()">Clear Filters</button>
+                        <button class="btn btn-primary" onclick="applyFilters()">Apply Filters</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Summary -->
+            <div class="results-summary">
+                <p><span id="resultsCount">24</span> crops found</p>
+                <div class="view-toggles">
+                    <button class="view-toggle active" data-view="grid">
+                        <i class="fas fa-th-large"></i>
+                    </button>
+                    <button class="view-toggle" data-view="list">
+                        <i class="fas fa-list"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Crops Grid -->
+            <div class="crops-container" id="cropsContainer">
+                <div class="crop-card" data-category="vegetables" data-region="khomas" data-price="45">
+                    <div class="crop-image-container">
+                        <img src="images/tomatoes.jpg" alt="Fresh Tomatoes" class="crop-image">
+                        <button class="favorite-btn" onclick="toggleFavorite(this)">
+                            <i class="far fa-heart"></i>
+                        </button>
+                        <div class="crop-badges">
+                            <span class="badge organic">Organic</span>
+                        </div>
+                    </div>
+                    <div class="crop-info">
+                        <div class="farmer-info">
+                            <img src="images/farmer-avatar.jpg" alt="John Kazhila" class="farmer-avatar">
+                            <span class="farmer-name">John Kazhila</span>
+                            <div class="farmer-rating">
+                                <span class="stars">★★★★★</span>
+                                <span class="rating-text">(4.8)</span>
+                            </div>
+                        </div>
+                        <h3 class="crop-name">Fresh Tomatoes</h3>
+                        <p class="crop-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Windhoek, Khomas
+                        </p>
+                        <p class="crop-description">Premium quality organic tomatoes, perfect for cooking and salads.</p>
+                        <div class="crop-details">
+                            <div class="quantity-available">
+                                <i class="fas fa-box"></i>
+                                <span>50kg available</span>
+                            </div>
+                            <div class="harvest-info">
+                                <i class="fas fa-calendar"></i>
+                                <span>Harvested 2 days ago</span>
+                            </div>
+                        </div>
+                        <div class="price-section">
+                            <span class="price">N$45/kg</span>
+                            <span class="min-order">Min. 5kg</span>
+                        </div>
+                        <div class="delivery-options">
+                            <span class="delivery-option">
+                                <i class="fas fa-truck"></i>
+                                Local Delivery
+                            </span>
+                            <span class="delivery-option">
+                                <i class="fas fa-store"></i>
+                                Farm Pickup
+                            </span>
+                        </div>
+                    </div>
+                    <div class="crop-actions">
+                        <div class="quantity-selector">
+                            <label>Quantity (kg)</label>
+                            <div class="quantity-input">
+                                <button class="qty-btn" onclick="decreaseQty(this)">-</button>
+                                <input type="number" min="5" value="5" class="qty-input">
+                                <button class="qty-btn" onclick="increaseQty(this)">+</button>
+                            </div>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn btn-primary" onclick="addToCart(this)">
+                                <i class="fas fa-cart-plus"></i>
+                                Add to Cart
+                            </button>
+                            <button class="btn btn-outline" onclick="contactFarmer(this)">
+                                <i class="fas fa-comment"></i>
+                                Contact
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="crop-card" data-category="grains" data-region="otjozondjupa" data-price="25">
+                    <div class="crop-image-container">
+                        <img src="images/maize.jpg" alt="Yellow Maize" class="crop-image">
+                        <button class="favorite-btn" onclick="toggleFavorite(this)">
+                            <i class="far fa-heart"></i>
+                        </button>
+                        <div class="crop-badges">
+                            <span class="badge sustainable">Sustainable</span>
+                        </div>
+                    </div>
+                    <div class="crop-info">
+                        <div class="farmer-info">
+                            <img src="images/farmer-avatar.jpg" alt="Maria Nghitongo" class="farmer-avatar">
+                            <span class="farmer-name">Maria Nghitongo</span>
+                            <div class="farmer-rating">
+                                <span class="stars">★★★★☆</span>
+                                <span class="rating-text">(4.6)</span>
+                            </div>
+                        </div>
+                        <h3 class="crop-name">Yellow Maize</h3>
+                        <p class="crop-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Otjiwarongo, Otjozondjupa
+                        </p>
+                        <p class="crop-description">High-quality yellow maize, perfect for milling and animal feed.</p>
+                        <div class="crop-details">
+                            <div class="quantity-available">
+                                <i class="fas fa-box"></i>
+                                <span>200kg available</span>
+                            </div>
+                            <div class="harvest-info">
+                                <i class="fas fa-calendar"></i>
+                                <span>Harvested 1 week ago</span>
+                            </div>
+                        </div>
+                        <div class="price-section">
+                            <span class="price">N$25/kg</span>
+                            <span class="min-order">Min. 10kg</span>
+                        </div>
+                        <div class="delivery-options">
+                            <span class="delivery-option">
+                                <i class="fas fa-shipping-fast"></i>
+                                Shipping Available
+                            </span>
+                            <span class="delivery-option">
+                                <i class="fas fa-store"></i>
+                                Farm Pickup
+                            </span>
+                        </div>
+                    </div>
+                    <div class="crop-actions">
+                        <div class="quantity-selector">
+                            <label>Quantity (kg)</label>
+                            <div class="quantity-input">
+                                <button class="qty-btn" onclick="decreaseQty(this)">-</button>
+                                <input type="number" min="10" value="10" class="qty-input">
+                                <button class="qty-btn" onclick="increaseQty(this)">+</button>
+                            </div>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn btn-primary" onclick="addToCart(this)">
+                                <i class="fas fa-cart-plus"></i>
+                                Add to Cart
+                            </button>
+                            <button class="btn btn-outline" onclick="contactFarmer(this)">
+                                <i class="fas fa-comment"></i>
+                                Contact
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="crop-card" data-category="vegetables" data-region="erongo" data-price="35">
+                    <div class="crop-image-container">
+                        <img src="images/onions.jpg" alt="Red Onions" class="crop-image">
+                        <button class="favorite-btn" onclick="toggleFavorite(this)">
+                            <i class="far fa-heart"></i>
+                        </button>
+                        <div class="crop-badges">
+                            <span class="badge pesticide-free">Pesticide-free</span>
+                        </div>
+                    </div>
+                    <div class="crop-info">
+                        <div class="farmer-info">
+                            <img src="images/farmer-avatar.jpg" alt="David Shikongo" class="farmer-avatar">
+                            <span class="farmer-name">David Shikongo</span>
+                            <div class="farmer-rating">
+                                <span class="stars">★★★★★</span>
+                                <span class="rating-text">(4.9)</span>
+                            </div>
+                        </div>
+                        <h3 class="crop-name">Red Onions</h3>
+                        <p class="crop-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Swakopmund, Erongo
+                        </p>
+                        <p class="crop-description">Fresh red onions, great for cooking and long-term storage.</p>
+                        <div class="crop-details">
+                            <div class="quantity-available">
+                                <i class="fas fa-box"></i>
+                                <span>75kg available</span>
+                            </div>
+                            <div class="harvest-info">
+                                <i class="fas fa-calendar"></i>
+                                <span>Harvested 3 days ago</span>
+                            </div>
+                        </div>
+                        <div class="price-section">
+                            <span class="price">N$35/kg</span>
+                            <span class="min-order">Min. 3kg</span>
+                        </div>
+                        <div class="delivery-options">
+                            <span class="delivery-option">
+                                <i class="fas fa-truck"></i>
+                                Local Delivery
+                            </span>
+                        </div>
+                    </div>
+                    <div class="crop-actions">
+                        <div class="quantity-selector">
+                            <label>Quantity (kg)</label>
+                            <div class="quantity-input">
+                                <button class="qty-btn" onclick="decreaseQty(this)">-</button>
+                                <input type="number" min="3" value="3" class="qty-input">
+                                <button class="qty-btn" onclick="increaseQty(this)">+</button>
+                            </div>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn btn-primary" onclick="addToCart(this)">
+                                <i class="fas fa-cart-plus"></i>
+                                Add to Cart
+                            </button>
+                            <button class="btn btn-outline" onclick="contactFarmer(this)">
+                                <i class="fas fa-comment"></i>
+                                Contact
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Load More Button -->
+            <div class="load-more-container">
+                <button class="btn btn-secondary" onclick="loadMoreCrops()">
+                    <i class="fas fa-plus"></i>
+                    Load More Crops
+                </button>
+            </div>
+        </section>
+
+        <!-- Shopping Cart Section -->
+        <section id="cart" class="content-section">
+            <div class="section-header">
+                <h1>Shopping Cart</h1>
+                <p>Review your selected items before placing an order</p>
+            </div>
+
+            <div class="cart-container" id="cartContainer">
+                <div class="cart-empty" id="cartEmpty">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h3>Your cart is empty</h3>
+                    <p>Start browsing crops to add items to your cart</p>
+                    <button class="btn btn-primary" onclick="showSection('browse-crops')">
+                        Browse Crops
+                    </button>
+                </div>
+
+                <div class="cart-items" id="cartItems" style="display: none;">
+                    <!-- Cart items will be populated by JavaScript -->
+                </div>
+
+                <div class="cart-summary" id="cartSummary" style="display: none;">
+                    <div class="summary-row">
+                        <span>Subtotal:</span>
+                        <span id="cartSubtotal">N$0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Estimated Delivery:</span>
+                        <span id="estimatedDelivery">N$0.00</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total:</span>
+                        <span id="cartTotal">N$0.00</span>
+                    </div>
+                    <div class="cart-actions">
+                        <button class="btn btn-outline" onclick="clearCart()">Clear Cart</button>
+                        <button class="btn btn-primary" onclick="proceedToCheckout()">
+                            <i class="fas fa-credit-card"></i>
+                            Proceed to Checkout
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- My Orders Section -->
+        <section id="my-orders" class="content-section">
+            <div class="section-header">
+                <h1>My Orders</h1>
+                <p>Track your current and recent orders</p>
+            </div>
+
+            <div class="orders-filter">
+                <div class="filter-group">
+                    <select id="buyerOrderStatusFilter" class="filter-select">
+                        <option value="">All Orders</option>
+                        <option value="pending">Pending</option>
+                        <option value="confirmed">Confirmed</option>
+                        <option value="in-transit">In Transit</option>
+                        <option value="delivered">Delivered</option>
+                        <option value="cancelled">Cancelled</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="orders-list">
+                <div class="buyer-order-card">
+                    <div class="order-header">
+                        <div class="order-info">
+                            <div class="order-id">#ORD-001</div>
+                            <div class="order-date">Placed on March 15, 2025</div>
+                        </div>
+                        <div class="order-status confirmed">Confirmed</div>
+                    </div>
+                    <div class="order-content">
+                        <div class="order-items">
+                            <div class="order-item">
+                                <img src="images/tomatoes.jpg" alt="Fresh Tomatoes" class="item-image">
+                                <div class="item-details">
+                                    <h4>Fresh Tomatoes</h4>
+                                    <p>From: John Kazhila</p>
+                                    <p>20kg × N$45/kg</p>
+                                </div>
+                                <div class="item-total">N$900</div>
+                            </div>
+                        </div>
+                        <div class="order-summary">
+                            <div class="delivery-info">
+                                <i class="fas fa-truck"></i>
+                                <span>Expected delivery: March 18, 2025</span>
+                            </div>
+                            <div class="order-total">
+                                <strong>Total: N$950 (incl. delivery)</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="order-actions">
+                        <button class="btn btn-outline btn-small">
+                            <i class="fas fa-comment"></i>
+                            Contact Farmer
+                        </button>
+                        <button class="btn btn-secondary btn-small">
+                            <i class="fas fa-eye"></i>
+                            Track Order
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Checkout Modal -->
+    <div id="checkoutModal" class="modal">
+        <div class="modal-content checkout-modal">
+            <span class="close">&times;</span>
+            <h2 class="modal-title">Checkout</h2>
+            
+            <form id="checkoutForm" class="checkout-form">
+                <div class="checkout-section">
+                    <h3>Delivery Information</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="deliveryAddress">Delivery Address *</label>
+                            <textarea id="deliveryAddress" rows="3" required placeholder="Enter your full delivery address"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="contactPhone">Contact Phone *</label>
+                            <input type="tel" id="contactPhone" required placeholder="+264 XX XXX XXXX">
+                        </div>
+                        <div class="form-group">
+                            <label for="deliveryDate">Preferred Delivery Date</label>
+                            <input type="date" id="deliveryDate">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="checkout-section">
+                    <h3>Order Notes</h3>
+                    <div class="form-group">
+                        <textarea id="orderNotes" rows="3" placeholder="Any special instructions for the farmers..."></textarea>
+                    </div>
+                </div>
+
+                <div class="checkout-summary">
+                    <h3>Order Summary</h3>
+                    <div id="checkoutItems"></div>
+                    <div class="summary-totals">
+                        <div class="summary-row">
+                            <span>Subtotal:</span>
+                            <span id="checkoutSubtotal">N$0.00</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Delivery Fee:</span>
+                            <span id="checkoutDeliveryFee">N$50.00</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total:</span>
+                            <span id="checkoutTotal">N$0.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="checkout-actions">
+                    <button type="button" class="btn btn-outline" onclick="closeCheckout()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-check"></i>
+                        Place Order
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/buyer-portal.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+[
+  {
+    "_id": { "$oid": "000000000000000000000301" },
+    "buyer_id": "",
+    "products": [
+      {
+        "product_id": "",
+        "quantity": 0,
+        "price": 0
+      }
+    ],
+    "total_amount": 0,
+    "status": "pending",
+    "order_date": "",
+    "delivery_date": ""
+  }
+]

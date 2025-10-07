@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Portal - Namibian Farmers Marketplace</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/farmer-portal.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <a href="index.html">
+                        <img src="images/logo.svg" alt="Namibian Farmers Marketplace" class="logo">
+                    </a>
+                    <span class="brand-text">Farmer Portal</span>
+                </div>
+                <div class="nav-links">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="marketplace-dashboard.html" class="nav-link">Marketplace</a>
+                    <a href="chat.html" class="nav-link">Chat</a>
+                    <a href="buyer-portal.html" class="nav-link buyer-only" style="display: none;">Buyer Portal</a>
+                    <a href="admin-panel.html" class="nav-link admin-only" style="display: none;">Admin</a>
+                </div>
+                <div class="nav-auth">
+                    <div class="user-info">
+                        <span class="user-name" id="userWelcome">Welcome, Farmer</span>
+                        <div class="user-dropdown">
+                            <button class="dropdown-btn">
+                                <i class="fas fa-user-circle"></i>
+                            </button>
+                            <div class="dropdown-content">
+                                <a href="#profile"><i class="fas fa-user"></i> My Profile</a>
+                                <a href="#settings"><i class="fas fa-cog"></i> Settings</a>
+                                <a href="#help"><i class="fas fa-question-circle"></i> Help</a>
+                                <a href="#" onclick="handleLogout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-menu">
+            <a href="#dashboard" class="menu-item active">
+                <i class="fas fa-tachometer-alt"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="#my-crops" class="menu-item">
+                <i class="fas fa-seedling"></i>
+                <span>My Crops</span>
+            </a>
+            <a href="#add-crop" class="menu-item">
+                <i class="fas fa-plus"></i>
+                <span>Add New Crop</span>
+            </a>
+            <a href="#orders" class="menu-item">
+                <i class="fas fa-shopping-bag"></i>
+                <span>Orders</span>
+            </a>
+            <a href="#messages" class="menu-item">
+                <i class="fas fa-envelope"></i>
+                <span>Messages</span>
+                <span class="message-count">3</span>
+            </a>
+            <a href="#analytics" class="menu-item">
+                <i class="fas fa-chart-bar"></i>
+                <span>Analytics</span>
+            </a>
+            <a href="#profile" class="menu-item">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </a>
+            <a href="#training" class="menu-item">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Training</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="content-section active">
+            <div class="section-header">
+                <h1 id="dashboardTitle">Farmer Dashboard</h1>
+                <p id="dashboardSubtitle">Manage your crops and track your performance</p>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>5</h3>
+                        <p>Active Listings</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>12</h3>
+                        <p>Pending Orders</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>N$2,450</h3>
+                        <p>This Month's Sales</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>89</h3>
+                        <p>Profile Views</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="dashboard-section">
+                <h2>Recent Activity</h2>
+                <div class="activity-list">
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="activity-content">
+                            <p><strong>New order received</strong> for Fresh Tomatoes</p>
+                            <span class="activity-time">2 hours ago</span>
+                        </div>
+                        <div class="activity-action">
+                            <button class="btn btn-primary btn-small">View Order</button>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <i class="fas fa-message"></i>
+                        </div>
+                        <div class="activity-content">
+                            <p><strong>Message from buyer</strong> about Yellow Maize pricing</p>
+                            <span class="activity-time">5 hours ago</span>
+                        </div>
+                        <div class="activity-action">
+                            <button class="btn btn-outline btn-small">Reply</button>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <div class="activity-content">
+                            <p><strong>Your Red Onions listing</strong> was viewed 15 times today</p>
+                            <span class="activity-time">1 day ago</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- My Crops Section -->
+        <section id="my-crops" class="content-section">
+            <div class="section-header">
+                <h1>My Crop Listings</h1>
+                <button class="btn btn-primary" onclick="showSection('add-crop')">
+                    <i class="fas fa-plus"></i>
+                    Add New Crop
+                </button>
+            </div>
+
+            <!-- Crops Filter -->
+            <div class="crops-filter">
+                <div class="filter-group">
+                    <select id="statusFilter" class="filter-select">
+                        <option value="">All Status</option>
+                        <option value="active">Active</option>
+                        <option value="sold-out">Sold Out</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                    <select id="categoryFilter" class="filter-select">
+                        <option value="">All Categories</option>
+                        <option value="vegetables">Vegetables</option>
+                        <option value="fruits">Fruits</option>
+                        <option value="grains">Grains</option>
+                        <option value="legumes">Legumes</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Crops List -->
+            <div class="crops-list">
+                <div class="crop-listing-card" data-status="active" data-category="vegetables">
+                    <div class="crop-image-container">
+                        <img src="images/tomatoes.jpg" alt="Fresh Tomatoes" class="crop-listing-image">
+                        <span class="status-badge active">Active</span>
+                    </div>
+                    <div class="crop-listing-info">
+                        <h3>Fresh Tomatoes</h3>
+                        <p class="crop-description">Premium quality tomatoes, organically grown</p>
+                        <div class="crop-details-grid">
+                            <div class="detail-item">
+                                <span class="label">Price:</span>
+                                <span class="value">N$45/kg</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">Available:</span>
+                                <span class="value">50kg</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">Views:</span>
+                                <span class="value">23</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">Inquiries:</span>
+                                <span class="value">5</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="crop-listing-actions">
+                        <button class="btn btn-outline btn-small">
+                            <i class="fas fa-edit"></i>
+                            Edit
+                        </button>
+                        <button class="btn btn-secondary btn-small">
+                            <i class="fas fa-eye"></i>
+                            View
+                        </button>
+                        <button class="btn btn-danger btn-small">
+                            <i class="fas fa-trash"></i>
+                            Delete
+                        </button>
+                    </div>
+                </div>
+
+                <div class="crop-listing-card" data-status="active" data-category="grains">
+                    <div class="crop-image-container">
+                        <img src="images/maize.jpg" alt="Yellow Maize" class="crop-listing-image">
+                        <span class="status-badge active">Active</span>
+                    </div>
+                    <div class="crop-listing-info">
+                        <h3>Yellow Maize</h3>
+                        <p class="crop-description">High-quality yellow maize, perfect for milling</p>
+                        <div class="crop-details-grid">
+                            <div class="detail-item">
+                                <span class="label">Price:</span>
+                                <span class="value">N$25/kg</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">Available:</span>
+                                <span class="value">200kg</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">Views:</span>
+                                <span class="value">45</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">Inquiries:</span>
+                                <span class="value">8</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="crop-listing-actions">
+                        <button class="btn btn-outline btn-small">
+                            <i class="fas fa-edit"></i>
+                            Edit
+                        </button>
+                        <button class="btn btn-secondary btn-small">
+                            <i class="fas fa-eye"></i>
+                            View
+                        </button>
+                        <button class="btn btn-danger btn-small">
+                            <i class="fas fa-trash"></i>
+                            Delete
+                        </button>
+                    </div>
+                </div>
+
+                <div class="crop-listing-card" data-status="sold-out" data-category="vegetables">
+                    <div class="crop-image-container">
+                        <img src="images/onions.jpg" alt="Red Onions" class="crop-listing-image">
+                        <span class="status-badge sold-out">Sold Out</span>
+                    </div>
+                    <div class="crop-listing-info">
+                        <h3>Red Onions</h3>
+                        <p class="crop-description">Fresh red onions, great for cooking</p>
+                        <div class="crop-details-grid">
+                            <div class="detail-item">
+                                <span class="label">Price:</span>
+                                <span class="value">N$35/kg</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">Sold:</span>
+                                <span class="value">75kg</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">Views:</span>
+                                <span class="value">67</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">Revenue:</span>
+                                <span class="value">N$2,625</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="crop-listing-actions">
+                        <button class="btn btn-primary btn-small">
+                            <i class="fas fa-redo"></i>
+                            Relist
+                        </button>
+                        <button class="btn btn-secondary btn-small">
+                            <i class="fas fa-eye"></i>
+                            View
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Add Crop Section -->
+        <section id="add-crop" class="content-section">
+            <div class="section-header">
+                <h1>Add New Crop Listing</h1>
+                <p>List your produce to connect with potential buyers</p>
+            </div>
+
+            <form id="addCropForm" class="add-crop-form">
+                <div class="form-grid">
+                    <div class="form-section">
+                        <h3>Basic Information</h3>
+                        
+                        <div class="form-group">
+                            <label for="cropName">Crop Name *</label>
+                            <input type="text" id="cropName" required placeholder="e.g., Fresh Tomatoes">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cropCategory">Category *</label>
+                            <select id="cropCategory" required>
+                                <option value="">Select Category</option>
+                                <option value="vegetables">Vegetables</option>
+                                <option value="fruits">Fruits</option>
+                                <option value="grains">Grains</option>
+                                <option value="legumes">Legumes</option>
+                                <option value="herbs">Herbs</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cropDescription">Description</label>
+                            <textarea id="cropDescription" rows="4" placeholder="Describe your crop's quality, growing method, etc."></textarea>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="quantity">Available Quantity (kg) *</label>
+                                <input type="number" id="quantity" required min="1" placeholder="50">
+                            </div>
+                            <div class="form-group">
+                                <label for="price">Price per kg (N$) *</label>
+                                <input type="number" id="price" required min="0" step="0.01" placeholder="45.00">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Crop Images</h3>
+                        
+                        <div class="image-upload-area" id="imageUploadArea">
+                            <div class="upload-placeholder">
+                                <i class="fas fa-camera"></i>
+                                <p>Click to upload crop images</p>
+                                <span>Upload up to 5 images (Max 5MB each)</span>
+                            </div>
+                            <input type="file" id="cropImages" multiple accept="image/*" style="display: none;">
+                        </div>
+
+                        <div class="image-preview" id="imagePreview"></div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Additional Details</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="harvestDate">Harvest Date</label>
+                            <input type="date" id="harvestDate">
+                        </div>
+                        <div class="form-group">
+                            <label for="availableUntil">Available Until</label>
+                            <input type="date" id="availableUntil">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Growing Method</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="growingMethod" value="organic">
+                                <span class="checkmark"></span>
+                                Organic
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="growingMethod" value="sustainable">
+                                <span class="checkmark"></span>
+                                Sustainable
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="growingMethod" value="pesticide-free">
+                                <span class="checkmark"></span>
+                                Pesticide-free
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Delivery Options</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="deliveryOptions" value="pickup">
+                                <span class="checkmark"></span>
+                                Farm Pickup Available
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="deliveryOptions" value="delivery">
+                                <span class="checkmark"></span>
+                                Local Delivery Available
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="deliveryOptions" value="shipping">
+                                <span class="checkmark"></span>
+                                Shipping Available
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notes">Additional Notes</label>
+                        <textarea id="notes" rows="3" placeholder="Any additional information buyers should know..."></textarea>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-outline" onclick="resetForm()">
+                        <i class="fas fa-times"></i>
+                        Cancel
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-plus"></i>
+                        Add Crop Listing
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Orders Section -->
+        <section id="orders" class="content-section">
+            <div class="section-header">
+                <h1>Order Management</h1>
+                <p>Track and manage your crop orders</p>
+            </div>
+
+            <div class="orders-filter">
+                <div class="filter-group">
+                    <select id="orderStatusFilter" class="filter-select">
+                        <option value="">All Orders</option>
+                        <option value="pending">Pending</option>
+                        <option value="confirmed">Confirmed</option>
+                        <option value="completed">Completed</option>
+                        <option value="cancelled">Cancelled</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="orders-list">
+                <div class="order-card">
+                    <div class="order-header">
+                        <div class="order-id">#ORD-001</div>
+                        <div class="order-status pending">Pending</div>
+                    </div>
+                    <div class="order-details">
+                        <div class="buyer-info">
+                            <h4>Maria Santos Restaurant</h4>
+                            <p><i class="fas fa-envelope"></i> maria@santosrestaurant.com</p>
+                            <p><i class="fas fa-phone"></i> +264 61 234 567</p>
+                        </div>
+                        <div class="order-items">
+                            <div class="item">
+                                <span>Fresh Tomatoes</span>
+                                <span>20kg × N$45/kg = N$900</span>
+                            </div>
+                        </div>
+                        <div class="order-total">
+                            <strong>Total: N$900</strong>
+                        </div>
+                    </div>
+                    <div class="order-actions">
+                        <button class="btn btn-primary btn-small">Accept Order</button>
+                        <button class="btn btn-outline btn-small">Message Buyer</button>
+                        <button class="btn btn-danger btn-small">Decline</button>
+                    </div>
+                </div>
+
+                <div class="order-card">
+                    <div class="order-header">
+                        <div class="order-id">#ORD-002</div>
+                        <div class="order-status confirmed">Confirmed</div>
+                    </div>
+                    <div class="order-details">
+                        <div class="buyer-info">
+                            <h4>Green Valley Grocery</h4>
+                            <p><i class="fas fa-envelope"></i> orders@greenvalley.com</p>
+                            <p><i class="fas fa-phone"></i> +264 61 345 678</p>
+                        </div>
+                        <div class="order-items">
+                            <div class="item">
+                                <span>Yellow Maize</span>
+                                <span>100kg × N$25/kg = N$2,500</span>
+                            </div>
+                        </div>
+                        <div class="order-total">
+                            <strong>Total: N$2,500</strong>
+                        </div>
+                    </div>
+                    <div class="order-actions">
+                        <button class="btn btn-primary btn-small">Mark as Delivered</button>
+                        <button class="btn btn-outline btn-small">Message Buyer</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/farmer-portal.js"></script>
+</body>
+</html>

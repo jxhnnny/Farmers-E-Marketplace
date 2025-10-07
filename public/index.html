@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Namibian Farmers Marketplace - Connecting Farmers with Buyers</title>
+    <meta name="description" content="A marketplace connecting small-crop farmers in Namibia directly with buyers. Fresh produce, fair prices, direct from farm to table.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <img src="images/logo.svg" alt="Namibian Farmers Marketplace" class="logo">
+                    <span class="brand-text">Namibian Farmers Marketplace</span>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link active">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="marketplace.html" class="nav-link">Marketplace</a>
+                    </li>
+                    <li class="nav-item logged-in-only" style="display: none;">
+                        <a href="chat.html" class="nav-link">Chat</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="about.html" class="nav-link">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="support.html" class="nav-link">Support</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contact.html" class="nav-link">Contact</a>
+                    </li>
+                </ul>
+                <div class="nav-auth">
+                    <!-- Logged out state (default) -->
+                    <div id="loggedOutNav" class="auth-state">
+                        <a href="#login" class="btn btn-outline">Login</a>
+                        <a href="#register" class="btn btn-primary">Register</a>
+                        <div class="user-type-selector">
+                            <select id="userType" class="user-select">
+                                <option value="">Select User Type</option>
+                                <option value="farmer">I'm a Farmer</option>
+                                <option value="buyer">I'm a Buyer</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- Logged in state (hidden by default) -->
+                    <div id="loggedInNav" class="auth-state" style="display: none;">
+                        <div class="user-info">
+                            <span class="user-name" id="homeUserWelcome">Welcome, User</span>
+                            <div class="user-dropdown">
+                                <button class="dropdown-btn">
+                                    <i class="fas fa-user-circle"></i>
+                                </button>
+                                <div class="dropdown-content">
+                                    <a href="#" id="userPortalLink"><i class="fas fa-tachometer-alt"></i> My Portal</a>
+                                    <a href="#profile"><i class="fas fa-user"></i> My Profile</a>
+                                    <a href="#settings"><i class="fas fa-cog"></i> Settings</a>
+                                    <a href="#help"><i class="fas fa-question-circle"></i> Help</a>
+                                    <a href="#" onclick="handleHomeLogout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title" id="heroTitle">
+                    For the Love of <span class="highlight">Fresh Produce</span>
+                </h1>
+                <p class="hero-subtitle" id="heroSubtitle">
+                    Connecting Namibian farmers directly with buyers since 2025. 
+                    Supporting local agriculture and bringing fresh, quality crops from farm to table.
+                </p>
+                <div class="hero-buttons" id="heroButtons">
+                    <a href="farmer-portal.html" class="btn btn-primary btn-large">
+                        <i class="fas fa-seedling"></i>
+                        Sell Your Crops
+                    </a>
+                    <a href="buyer-portal.html" class="btn btn-secondary btn-large">
+                        <i class="fas fa-shopping-cart"></i>
+                        Buy Fresh Produce
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Active Farmers</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Crop Types</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">1000+</div>
+                        <div class="stat-label">Happy Buyers</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="images/local farmer.jpg" alt="Namibian farmer with fresh produce" class="hero-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Access Section -->
+    <section class="quick-access">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Access Our Platform</h2>
+                <p class="section-subtitle">Choose your portal to get started</p>
+            </div>
+            
+            <div class="access-grid">
+                <div class="access-card">
+                    <div class="access-icon">
+                        <i class="fas fa-tractor"></i>
+                    </div>
+                    <h3 class="access-title">Farmer Portal</h3>
+                    <p class="access-description">
+                        Manage your crops, track orders, and grow your business.
+                    </p>
+                    <a href="farmer-portal.html" class="btn btn-primary">
+                        Access Farmer Portal
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="access-card">
+                    <div class="access-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3 class="access-title">Buyer Portal</h3>
+                    <p class="access-description">
+                        Browse fresh produce and connect directly with farmers.
+                    </p>
+                    <a href="buyer-portal.html" class="btn btn-secondary">
+                        Access Buyer Portal
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="access-card">
+                    <div class="access-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="access-title">Marketplace Dashboard</h3>
+                    <p class="access-description">
+                        View market insights, trends, and analytics.
+                    </p>
+                    <a href="marketplace-dashboard.html" class="btn btn-outline">
+                        View Dashboard
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Produce Section -->
+    <section id="marketplace" class="featured-produce">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Fresh Produce Available Now</h2>
+                <p class="section-subtitle">Discover quality crops from local farmers across Namibia</p>
+            </div>
+            
+            <!-- Search and Filter Bar -->
+            <div class="search-filter-bar">
+                <div class="search-container">
+                    <input type="text" placeholder="Search for crops..." class="search-input" id="cropSearch">
+                    <button class="search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <div class="filter-container">
+                    <select class="filter-select" id="regionFilter">
+                        <option value="">All Regions</option>
+                        <option value="khomas">Khomas</option>
+                        <option value="erongo">Erongo</option>
+                        <option value="otjozondjupa">Otjozondjupa</option>
+                        <option value="omaheke">Omaheke</option>
+                        <option value="hardap">Hardap</option>
+                    </select>
+                    <select class="filter-select" id="cropTypeFilter">
+                        <option value="">All Crops</option>
+                        <option value="vegetables">Vegetables</option>
+                        <option value="fruits">Fruits</option>
+                        <option value="grains">Grains</option>
+                        <option value="legumes">Legumes</option>
+                    </select>
+                    <select class="filter-select" id="priceFilter">
+                        <option value="">All Prices</option>
+                        <option value="low">Under N$50/kg</option>
+                        <option value="medium">N$50-100/kg</option>
+                        <option value="high">Over N$100/kg</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Featured Crops Grid -->
+            <div class="crops-grid" id="cropsGrid">
+                <!-- Sample crop listings -->
+                <div class="crop-card">
+                    <img src="images/tomatoes.jpg" alt="Fresh Tomatoes" class="crop-image">
+                    <div class="crop-info">
+                        <h3 class="crop-name">Fresh Tomatoes</h3>
+                        <p class="crop-farmer">by John Kazhila</p>
+                        <p class="crop-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Windhoek, Khomas
+                        </p>
+                        <div class="crop-details">
+                            <span class="crop-quantity">50kg available</span>
+                            <span class="crop-price">N$45/kg</span>
+                        </div>
+                        <div class="crop-actions">
+                            <button class="btn btn-primary btn-small">
+                                <i class="fas fa-shopping-cart"></i>
+                                Add to Cart
+                            </button>
+                            <button class="btn btn-outline btn-small">
+                                <i class="fas fa-comment"></i>
+                                Contact Farmer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="crop-card">
+                    <img src="images/maize.jpg" alt="Yellow Maize" class="crop-image">
+                    <div class="crop-info">
+                        <h3 class="crop-name">Yellow Maize</h3>
+                        <p class="crop-farmer">by Maria Nghitongo</p>
+                        <p class="crop-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Otjiwarongo, Otjozondjupa
+                        </p>
+                        <div class="crop-details">
+                            <span class="crop-quantity">200kg available</span>
+                            <span class="crop-price">N$25/kg</span>
+                        </div>
+                        <div class="crop-actions">
+                            <button class="btn btn-primary btn-small">
+                                <i class="fas fa-shopping-cart"></i>
+                                Add to Cart
+                            </button>
+                            <button class="btn btn-outline btn-small">
+                                <i class="fas fa-comment"></i>
+                                Contact Farmer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="crop-card">
+                    <img src="images/onions.jpg" alt="Red Onions" class="crop-image">
+                    <div class="crop-info">
+                        <h3 class="crop-name">Red Onions</h3>
+                        <p class="crop-farmer">by David Shikongo</p>
+                        <p class="crop-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Swakopmund, Erongo
+                        </p>
+                        <div class="crop-details">
+                            <span class="crop-quantity">75kg available</span>
+                            <span class="crop-price">N$35/kg</span>
+                        </div>
+                        <div class="crop-actions">
+                            <button class="btn btn-primary btn-small">
+                                <i class="fas fa-shopping-cart"></i>
+                                Add to Cart
+                            </button>
+                            <button class="btn btn-outline btn-small">
+                                <i class="fas fa-comment"></i>
+                                Contact Farmer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="crop-card">
+                    <img src="images/cabbage.jpg" alt="Fresh Cabbage" class="crop-image">
+                    <div class="crop-info">
+                        <h3 class="crop-name">Fresh Cabbage</h3>
+                        <p class="crop-farmer">by Anna Nangolo</p>
+                        <p class="crop-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Rehoboth, Hardap
+                        </p>
+                        <div class="crop-details">
+                            <span class="crop-quantity">100kg available</span>
+                            <span class="crop-price">N$20/kg</span>
+                        </div>
+                        <div class="crop-actions">
+                            <button class="btn btn-primary btn-small">
+                                <i class="fas fa-shopping-cart"></i>
+                                Add to Cart
+                            </button>
+                            <button class="btn btn-outline btn-small">
+                                <i class="fas fa-comment"></i>
+                                Contact Farmer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="view-all-container">
+                <a href="buyer-portal.html" class="btn btn-secondary">
+                    Browse All Produce
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">How Our Marketplace Works</h2>
+                <p class="section-subtitle">Simple steps to connect farmers and buyers</p>
+            </div>
+            
+            <div class="steps-container">
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <h3 class="step-title">1. Register</h3>
+                    <p class="step-description">
+                        Create your account as a farmer or buyer. It's free and takes just minutes.
+                    </p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3 class="step-title">2. List or Browse</h3>
+                    <p class="step-description">
+                        Farmers list their produce. Buyers browse and search for what they need.
+                    </p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3 class="step-title">3. Connect & Negotiate</h3>
+                    <p class="step-description">
+                        Direct communication between farmers and buyers for price negotiation.
+                    </p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="step-title">4. Complete Transaction</h3>
+                    <p class="step-description">
+                        Finalize the deal and arrange delivery or pickup. Both parties benefit.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Join Our Community?</h2>
+                <p class="cta-description">
+                    Whether you're a farmer looking to sell your produce or a buyer seeking fresh, 
+                    quality crops, we're here to help you succeed.
+                </p>
+                <div class="cta-buttons">
+                    <a href="farmer-portal.html" class="btn btn-primary btn-large">
+                        <i class="fas fa-seedling"></i>
+                        Join as Farmer
+                    </a>
+                    <a href="buyer-portal.html" class="btn btn-secondary btn-large">
+                        <i class="fas fa-shopping-cart"></i>
+                        Join as Buyer
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <img src="images/logo.svg" alt="Namibian Farmers Marketplace" class="footer-logo">
+                        <p class="footer-description">
+                            Connecting Namibian farmers with buyers for a sustainable agricultural future.
+                        </p>
+                    </div>
+                    <div class="social-links">
+                        <a href="#facebook" class="social-link">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#instagram" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#twitter" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#youtube" class="social-link">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="footer-title">For Farmers</h4>
+                    <ul class="footer-links">
+                        <li><a href="#farmer-registration">Register as Farmer</a></li>
+                        <li><a href="#list-produce">List Your Produce</a></li>
+                        <li><a href="#farmer-training">Farmer Training</a></li>
+                        <li><a href="#success-stories">Success Stories</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="footer-title">For Buyers</h4>
+                    <ul class="footer-links">
+                        <li><a href="#buyer-registration">Register as Buyer</a></li>
+                        <li><a href="#browse-produce">Browse Produce</a></li>
+                        <li><a href="#bulk-orders">Bulk Orders</a></li>
+                        <li><a href="#delivery-info">Delivery Info</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="footer-title">Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#help-center">Help Center</a></li>
+                        <li><a href="#contact-us">Contact Us</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#terms">Terms & Conditions</a></li>
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="footer-title">Contact Info</h4>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+264 61 123 456</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@namibianfarmers.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Windhoek, Namibia</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Namibian Farmers Marketplace. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#privacy-policy">Privacy Policy</a>
+                    <a href="#cookie-policy">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Registration Modal -->
+    <div id="registrationModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 class="modal-title">Join Our Marketplace</h2>
+            
+            <div class="registration-tabs">
+                <button class="tab-button active" data-tab="farmer">Register as Farmer</button>
+                <button class="tab-button" data-tab="buyer">Register as Buyer</button>
+            </div>
+
+            <div id="farmerTab" class="tab-content active">
+                <form id="farmerRegistrationForm" class="registration-form">
+                    <h3>Farmer Registration</h3>
+                    <div id="farmerErrorContainer"></div>
+                    <div id="farmerMessageContainer"></div>
+                    
+                    <div class="form-section">
+                        <span class="form-section-title">Personal Information</span>
+                        <div class="form-group">
+                            <input type="text" id="farmerName" placeholder="Full Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="farmerEmail" placeholder="Email Address" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="farmerPhone" placeholder="Phone Number" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <span class="form-section-title">Farm Information</span>
+                        <div class="form-group">
+                            <input type="text" id="farmName" placeholder="Farm Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" id="farmSize" placeholder="Farm Size (hectares)" min="0.1" step="0.1" required>
+                        </div>
+                        <div class="form-group">
+                            <select id="farmingExperience" required>
+                                <option value="">Years of Farming Experience</option>
+                                <option value="0">New to farming</option>
+                                <option value="1">1-2 years</option>
+                                <option value="3">3-5 years</option>
+                                <option value="6">6-10 years</option>
+                                <option value="11">11-15 years</option>
+                                <option value="16">16+ years</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <span class="form-section-title">Location Details</span>
+                        <div class="form-group">
+                            <select id="farmerRegion" required>
+                                <option value="">Select Your Region</option>
+                                <option value="khomas">Khomas</option>
+                                <option value="erongo">Erongo</option>
+                                <option value="otjozondjupa">Otjozondjupa</option>
+                                <option value="omaheke">Omaheke</option>
+                                <option value="hardap">Hardap</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="farmLocation" placeholder="Farm Location/Address" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <span class="form-section-title">Account Security</span>
+                        <div class="form-group">
+                            <input type="password" id="farmerPassword" placeholder="Password" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" id="farmerConfirmPassword" placeholder="Confirm Password" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-large">
+                        Register as Farmer
+                    </button>
+                </form>
+            </div>
+
+            <div id="buyerTab" class="tab-content">
+                <form id="buyerRegistrationForm" class="registration-form">
+                    <h3>Buyer Registration</h3>
+                    <div id="buyerErrorContainer"></div>
+                    <div id="buyerMessageContainer"></div>
+                    <div class="form-group">
+                        <input type="text" id="buyerName" placeholder="Full Name/Business Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="buyerEmail" placeholder="Email Address" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" id="buyerPhone" placeholder="Phone Number" required>
+                    </div>
+                    <div class="form-group">
+                        <select id="buyerType" required>
+                            <option value="">Select Buyer Type</option>
+                            <option value="individual">Individual Consumer</option>
+                            <option value="retailer">Retailer</option>
+                            <option value="restaurant">Restaurant</option>
+                            <option value="wholesaler">Wholesaler</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="businessName" placeholder="Business Name (Optional for businesses)" >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="buyerLocation" placeholder="Location/Address" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="buyerPassword" placeholder="Password" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="buyerConfirmPassword" placeholder="Confirm Password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-large">
+                        Register as Buyer
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
