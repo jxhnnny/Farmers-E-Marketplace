@@ -343,11 +343,11 @@ const APIUtils = {
         
         // Redirect users to their appropriate portals
         if (userType === 'farmer' && !currentPath.includes('farmer-portal')) {
-            window.location.href = '/farmer-portal.html';
+            window.location.href = '/public/farmer-portal.html';
         } else if (userType === 'buyer' && !currentPath.includes('buyer-portal')) {
-            window.location.href = '/buyer-portal.html';
+            window.location.href = '/public/buyer-portal.html';
         } else if (userType === 'admin' && !currentPath.includes('admin')) {
-            window.location.href = '/admin-panel.html';
+            window.location.href = '/public/admin-panel.html';
         }
     },
     

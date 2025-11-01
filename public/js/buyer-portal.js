@@ -65,12 +65,12 @@ async function checkBuyerAccess() {
 
 function redirectToLogin() {
     alert('Please log in to access the buyer portal.');
-    window.location.href = '/index.html';
+    window.location.href = '../index.html';
 }
 
 function redirectUnauthorized(userRole) {
     let message = 'Access denied. This portal is for buyers only.';
-    let redirectUrl = '/index.html';
+    let redirectUrl = '../index.html';
     
     if (userRole === 'farmer') {
         message = 'This portal is for buyers only. You will be redirected to the farmer portal.';
@@ -164,11 +164,11 @@ async function handleLogout() {
             await AuthAPI.logout();
         }
         // Redirect to home page
-        window.location.href = 'index.html';
+        window.location.href = '../index.html';
     } catch (error) {
         console.error('Error during logout:', error);
         // Still redirect even if logout API call fails
-        window.location.href = 'index.html';
+        window.location.href = '../index.html';
     }
 }
 

@@ -38,7 +38,7 @@ class ChatApp {
         try {
             const token = TokenManager.get();
             if (!token) {
-                window.location.href = 'index.html';
+                window.location.href = '../index.html';
                 return;
             }
 
@@ -54,11 +54,11 @@ class ChatApp {
                 this.updateNavigation();
             } else {
                 TokenManager.remove();
-                window.location.href = 'index.html';
+                window.location.href = '../index.html';
             }
         } catch (error) {
             console.error('Auth check failed:', error);
-            window.location.href = 'index.html';
+            window.location.href = '../index.html';
         }
     }
 
@@ -1232,7 +1232,7 @@ class ChatApp {
 // Global functions
 function handleLogout() {
     localStorage.removeItem('token');
-    window.location.href = 'index.html';
+    window.location.href = '../index.html';
 }
 
 function showNewChatModal() {

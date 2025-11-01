@@ -61,12 +61,12 @@ async function checkFarmerAccess() {
 
 function redirectToLogin() {
     alert('Please log in to access the farmer portal.');
-    window.location.href = '/index.html';
+    window.location.href = '../index.html';
 }
 
 function redirectUnauthorized(userRole) {
     let message = 'Access denied. This portal is for farmers only.';
-    let redirectUrl = '/index.html';
+    let redirectUrl = '../index.html';
     
     if (userRole === 'buyer') {
         message = 'This portal is for farmers only. You will be redirected to the buyer portal.';
@@ -156,11 +156,11 @@ async function handleLogout() {
             await AuthAPI.logout();
         }
         // Redirect to home page
-        window.location.href = 'index.html';
+        window.location.href = '../index.html';
     } catch (error) {
         console.error('Error during logout:', error);
         // Still redirect even if logout API call fails
-        window.location.href = 'index.html';
+        window.location.href = '../index.html';
     }
 }
 

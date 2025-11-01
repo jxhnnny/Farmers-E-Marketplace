@@ -638,7 +638,7 @@ async function handleFarmerRegistration(e) {
             setTimeout(() => {
                 document.getElementById('registrationModal').style.display = 'none';
                 e.target.reset();
-                window.location.href = '/farmer-portal.html';
+                window.location.href = '/public/farmer-portal.html';
             }, 2000);
         }
         
@@ -690,7 +690,7 @@ async function handleBuyerRegistration(e) {
             setTimeout(() => {
                 document.getElementById('registrationModal').style.display = 'none';
                 e.target.reset();
-                window.location.href = '/buyer-portal.html';
+                window.location.href = '/public/buyer-portal.html';
             }, 2000);
         }
         
